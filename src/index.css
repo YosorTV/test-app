@@ -49,4 +49,6 @@ ul {
   padding-top: 1rem;
   list-style: none;
   gap: 8px;
+  max-width: 200px;
+  flex-wrap: wrap;
 }
