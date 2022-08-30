@@ -1,29 +1,25 @@
 import { useCallback, useEffect, useState } from 'react'
+import { Counter, RandomList } from './Components'
+
 import './App.css'
-import { Counter } from './Components'
-import { RandomList } from './Components/RandomList'
 
 function App() {
   const [count, setCount] = useState<number>(0);
-  const [list, setList] = useState<any>([]);
+  const [list, setList] = useState<number[]>([]);
 
   const applyCounter = useCallback(() => {
-    setCount(count => count + 1)
     const num = Math.floor(Math.random() * 101);
+    
+    setCount(count => count + 1)
     setList([...list, num])
   }, [list, count]);
     
   useEffect(() => {
-    const timer = setTimeout(() => {
-      applyCounter()
-    }, 3000);
+    const timer = setTimeout(() => applyCounter(), 3000);
 
-    return () => {
-      clearTimeout(timer);
-    }
+    return () => clearTimeout(timer);
   }, [list]);
   
-
   return (
     <div className="App">
       <div className="card">
